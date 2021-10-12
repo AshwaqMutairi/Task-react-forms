@@ -9,16 +9,23 @@ function App() {
   const [show, setShow] = useState(false);
 
   const createStudent = (newStudent) => {
-    const id = StudentsList[StudentsList.length - 1].id + 1;
-    const nStudent = { ...newStudent, id: id };
-    console.log(nStudent);
-    setStudentsInfo([...StudentsList, newStudent]);
+    const id =
+      studentsInfo.length > 0
+        ? studentsInfo[studentsInfo.length - 1].id + 1
+        : 1;
+    newStudent = { ...newStudent, id: id };
+    console.log(newStudent);
+    setStudentsInfo([...studentsInfo, newStudent]);
   };
 
   return (
     <div className="App">
       <HeaderAndTitle showList={setShow} show={show} />
-      {show ? <StudentsList list={studentsInfo} /> : <Form />}
+      {show ? (
+        <StudentsList list={studentsInfo} />
+      ) : (
+        <Form createStudent={createStudent} />
+      )}
       <Form createStudent={createStudent} />
     </div>
   );

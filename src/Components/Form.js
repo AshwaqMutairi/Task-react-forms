@@ -29,7 +29,7 @@ function Form({ createStudent }) {
 
   return (
     <div className="form-page">
-      <form onSubmit={handleSubmit} className="student-form">
+      <form onSubmit={handleSubmit} className="form">
         <input
           name="name"
           value={student.name}
